@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addOrder, cancelOrder } from './actions';
+import { addOrder, cancelOrder } from '../redux';
 
-const CafeOrderSystem = () => {
+const CafeOrderSystem = (props) => {
   const dispatch = useDispatch();
-  const orders = useSelector(state => state.orders);
+  const orderList = useSelector(state => state.orders.orderList);
 
   const handleAddOrder = (item) => {
     dispatch(addOrder(item, 1));
@@ -25,8 +25,9 @@ const CafeOrderSystem = () => {
       </div>
       <div>
         <h3>주문 리스트</h3>
+        <span>(총 {orderList.length}잔)</span>
         <ul>
-          {orders.map(order => (
+          {orderList.map(order => (
             <li key={order.id}>
               {order.item} (수량: {order.quantity})
               <button onClick={() => handleCancelOrder(order.id)}>주문 취소</button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './store';
-import CafeOrderSystem from './CafeOrderSystem';
+import store from './redux/store';
+import CafeOrderSystem from './components/CafeOrderSystem';
 
 function App() {
   return (
